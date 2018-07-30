@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yhhz.mapper.SecurityAttMapper" >
+  <resultMap id="BaseResultMap" type="com.yhhz.pojo.SecurityAtt" >
+    <id column="Att_id" property="attId" jdbcType="BIGINT" />
+    <result column="Att_uid" property="attUid" jdbcType="BIGINT" />
+    <result column="Att_userName" property="attUsername" jdbcType="VARCHAR" />
+    <result column="Att_date" property="attDate" jdbcType="DATE" />
+    <result column="Att_workDate" property="attWorkdate" jdbcType="TIMESTAMP" />
+    <result column="Att_leaveDate" property="attLeavedate" jdbcType="TIMESTAMP" />
+    <result column="Att_author" property="attAuthor" jdbcType="VARCHAR" />
+    <result column="Att_image" property="attImage" jdbcType="VARCHAR" />
+    <result column="V_versions" property="vVersions" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Att_id, Att_uid, Att_userName, Att_date, Att_workDate, Att_leaveDate, Att_author, 
+    Att_image, V_versions
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from security_att
+    where Att_id = #{attId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from security_att
+    where Att_id = #{attId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yhhz.pojo.SecurityAtt" >
+    insert into security_att (Att_id, Att_uid, Att_userName, 
+      Att_date, Att_workDate, Att_leaveDate, 
+      Att_author, Att_image, V_versions
+      )
+    values (#{attId,jdbcType=BIGINT}, #{attUid,jdbcType=BIGINT}, #{attUsername,jdbcType=VARCHAR}, 
+      #{attDate,jdbcType=DATE}, #{attWorkdate,jdbcType=TIMESTAMP}, #{attLeavedate,jdbcType=TIMESTAMP}, 
+      #{attAuthor,jdbcType=VARCHAR}, #{attImage,jdbcType=VARCHAR}, #{vVersions,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yhhz.pojo.SecurityAtt" >
+    insert into security_att
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attId != null" >
+        Att_id,
+      </if>
+      <if test="attUid != null" >
+        Att_uid,
+      </if>
+      <if test="attUsername != null" >
+        Att_userName,
+      </if>
+      <if test="attDate != null" >
+        Att_date,
+      </if>
+      <if test="attWorkdate != null" >
+        Att_workDate,
+      </if>
+      <if test="attLeavedate != null" >
+        Att_leaveDate,
+      </if>
+      <if test="attAuthor != null" >
+        Att_author,
+      </if>
+      <if test="attImage != null" >
+        Att_image,
+      </if>
+      <if test="vVersions != null" >
+        V_versions,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attId != null" >
+        #{attId,jdbcType=BIGINT},
+      </if>
+      <if test="attUid != null" >
+        #{attUid,jdbcType=BIGINT},
+      </if>
+      <if test="attUsername != null" >
+        #{attUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="attDate != null" >
+        #{attDate,jdbcType=DATE},
+      </if>
+      <if test="attWorkdate != null" >
+        #{attWorkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attLeavedate != null" >
+        #{attLeavedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAuthor != null" >
+        #{attAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="attImage != null" >
+        #{attImage,jdbcType=VARCHAR},
+      </if>
+      <if test="vVersions != null" >
+        #{vVersions,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yhhz.pojo.SecurityAtt" >
+    update security_att
+    <set >
+      <if test="attUid != null" >
+        Att_uid = #{attUid,jdbcType=BIGINT},
+      </if>
+      <if test="attUsername != null" >
+        Att_userName = #{attUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="attDate != null" >
+        Att_date = #{attDate,jdbcType=DATE},
+      </if>
+      <if test="attWorkdate != null" >
+        Att_workDate = #{attWorkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attLeavedate != null" >
+        Att_leaveDate = #{attLeavedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attAuthor != null" >
+        Att_author = #{attAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="attImage != null" >
+        Att_image = #{attImage,jdbcType=VARCHAR},
+      </if>
+      <if test="vVersions != null" >
+        V_versions = #{vVersions,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Att_id = #{attId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yhhz.pojo.SecurityAtt" >
+    update security_att
+    set Att_uid = #{attUid,jdbcType=BIGINT},
+      Att_userName = #{attUsername,jdbcType=VARCHAR},
+      Att_date = #{attDate,jdbcType=DATE},
+      Att_workDate = #{attWorkdate,jdbcType=TIMESTAMP},
+      Att_leaveDate = #{attLeavedate,jdbcType=TIMESTAMP},
+      Att_author = #{attAuthor,jdbcType=VARCHAR},
+      Att_image = #{attImage,jdbcType=VARCHAR},
+      V_versions = #{vVersions,jdbcType=BIGINT}
+    where Att_id = #{attId,jdbcType=BIGINT}
+  </update>
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+   select * from  security_att ORDER BY Att_date
+  </select>
+  
+  
+  
+  <!--批量删除-->
+    <!--DELETE FROM hscs_itf_defination_lines WHERE HEADER_ID in(15,16);-->
+    <delete id="deleteBatch" parameterType="java.util.List">
+        DELETE from security_att where Att_id in
+        <foreach collection="del_ids" item="id"
+                 open="(" close=")" index="index" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+    <!--批量删除-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>

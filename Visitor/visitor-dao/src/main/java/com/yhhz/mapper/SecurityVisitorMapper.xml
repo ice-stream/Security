@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yhhz.mapper.SecurityVisitorMapper" >
+  <resultMap id="BaseResultMap" type="com.yhhz.pojo.SecurityVisitor" >
+    <id column="Vt_id" property="vtId" jdbcType="BIGINT" />
+    <result column="Vt_name" property="vtName" jdbcType="VARCHAR" />
+    <result column="Vt_date" property="vtDate" jdbcType="DATE" />
+    <result column="Vt_phone" property="vtPhone" jdbcType="VARCHAR" />
+    <result column="Vt_beginDat" property="vtBegindat" jdbcType="TIMESTAMP" />
+    <result column="Vt_leaveDate" property="vtLeavedate" jdbcType="TIMESTAMP" />
+    <result column="Vt_blacklist" property="vtBlacklist" jdbcType="INTEGER" />
+    <result column="Vt_image" property="vtImage" jdbcType="VARCHAR" />
+    <result column="Vt_meet" property="vtMeet" jdbcType="VARCHAR" />
+    <result column="V_versions" property="vVersions" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Vt_id, Vt_name, Vt_date, Vt_phone, Vt_beginDat, Vt_leaveDate, Vt_blacklist, Vt_image, 
+    Vt_meet, V_versions
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from security_visitor
+    where Vt_id = #{vtId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from security_visitor
+    where Vt_id = #{vtId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yhhz.pojo.SecurityVisitor" >
+    insert into security_visitor (Vt_id, Vt_name, Vt_date, 
+      Vt_phone, Vt_beginDat, Vt_leaveDate, 
+      Vt_blacklist, Vt_image, Vt_meet, 
+      V_versions)
+    values (#{vtId,jdbcType=BIGINT}, #{vtName,jdbcType=VARCHAR}, #{vtDate,jdbcType=DATE}, 
+      #{vtPhone,jdbcType=VARCHAR}, #{vtBegindat,jdbcType=TIMESTAMP}, #{vtLeavedate,jdbcType=TIMESTAMP}, 
+      #{vtBlacklist,jdbcType=INTEGER}, #{vtImage,jdbcType=VARCHAR}, #{vtMeet,jdbcType=VARCHAR}, 
+      #{vVersions,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yhhz.pojo.SecurityVisitor" >
+    insert into security_visitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vtId != null" >
+        Vt_id,
+      </if>
+      <if test="vtName != null" >
+        Vt_name,
+      </if>
+      <if test="vtDate != null" >
+        Vt_date,
+      </if>
+      <if test="vtPhone != null" >
+        Vt_phone,
+      </if>
+      <if test="vtBegindat != null" >
+        Vt_beginDat,
+      </if>
+      <if test="vtLeavedate != null" >
+        Vt_leaveDate,
+      </if>
+      <if test="vtBlacklist != null" >
+        Vt_blacklist,
+      </if>
+      <if test="vtImage != null" >
+        Vt_image,
+      </if>
+      <if test="vtMeet != null" >
+        Vt_meet,
+      </if>
+      <if test="vVersions != null" >
+        V_versions,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vtId != null" >
+        #{vtId,jdbcType=BIGINT},
+      </if>
+      <if test="vtName != null" >
+        #{vtName,jdbcType=VARCHAR},
+      </if>
+      <if test="vtDate != null" >
+        #{vtDate,jdbcType=DATE},
+      </if>
+      <if test="vtPhone != null" >
+        #{vtPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vtBegindat != null" >
+        #{vtBegindat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtLeavedate != null" >
+        #{vtLeavedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtBlacklist != null" >
+        #{vtBlacklist,jdbcType=INTEGER},
+      </if>
+      <if test="vtImage != null" >
+        #{vtImage,jdbcType=VARCHAR},
+      </if>
+      <if test="vtMeet != null" >
+        #{vtMeet,jdbcType=VARCHAR},
+      </if>
+      <if test="vVersions != null" >
+        #{vVersions,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yhhz.pojo.SecurityVisitor" >
+    update security_visitor
+    <set >
+      <if test="vtName != null" >
+        Vt_name = #{vtName,jdbcType=VARCHAR},
+      </if>
+      <if test="vtDate != null" >
+        Vt_date = #{vtDate,jdbcType=DATE},
+      </if>
+      <if test="vtPhone != null" >
+        Vt_phone = #{vtPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="vtBegindat != null" >
+        Vt_beginDat = #{vtBegindat,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtLeavedate != null" >
+        Vt_leaveDate = #{vtLeavedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vtBlacklist != null" >
+        Vt_blacklist = #{vtBlacklist,jdbcType=INTEGER},
+      </if>
+      <if test="vtImage != null" >
+        Vt_image = #{vtImage,jdbcType=VARCHAR},
+      </if>
+      <if test="vtMeet != null" >
+        Vt_meet = #{vtMeet,jdbcType=VARCHAR},
+      </if>
+      <if test="vVersions != null" >
+        V_versions = #{vVersions,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Vt_id = #{vtId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yhhz.pojo.SecurityVisitor" >
+    update security_visitor
+    set Vt_name = #{vtName,jdbcType=VARCHAR},
+      Vt_date = #{vtDate,jdbcType=DATE},
+      Vt_phone = #{vtPhone,jdbcType=VARCHAR},
+      Vt_beginDat = #{vtBegindat,jdbcType=TIMESTAMP},
+      Vt_leaveDate = #{vtLeavedate,jdbcType=TIMESTAMP},
+      Vt_blacklist = #{vtBlacklist,jdbcType=INTEGER},
+      Vt_image = #{vtImage,jdbcType=VARCHAR},
+      Vt_meet = #{vtMeet,jdbcType=VARCHAR},
+      V_versions = #{vVersions,jdbcType=BIGINT}
+    where Vt_id = #{vtId,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <select id="getALL" resultMap="BaseResultMap" >
+   select * from  security_visitor ORDER BY Vt_date
+  </select>
+  
+  
+  
+  <!--批量删除-->
+    <!--DELETE FROM hscs_itf_defination_lines WHERE HEADER_ID in(15,16);-->
+    <delete id="deleteBatch" parameterType="java.util.List">
+        DELETE from security_visitor where Vt_id in
+        <foreach collection="del_ids" item="id"
+                 open="(" close=")" index="index" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+    <!--批量删除-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>
